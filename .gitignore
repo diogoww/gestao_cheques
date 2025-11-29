@@ -1,0 +1,44 @@
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Pastas do XAMPP / Windows que NÃO devem ir para o GitHub
+xampp/
+htdocs/
+
+# Configurações de editor/IDE
+.vscode/
+.idea/
+
+# Arquivos temporários
+*.log
+*.tmp
+*.cache
+*.bak
+*.swp
+
+# Arquivos de sessão PHP
+sessions/
+*.sess
+
+# Banco de dados local (nunca suba)
+*.sql
+*.sqlite
+*.db
+
+# Configurações sensíveis (se existirem)
+config.php
+db/connect.php
+
+# Node (caso um dia use)
+node_modules/
+
+# Composer (caso um dia use PHP moderno)
+vendor/
+
+# Backups
+backup/
+*.zip
+*.rar
+*.7z
+*.old
