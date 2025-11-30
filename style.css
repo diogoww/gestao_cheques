@@ -1,0 +1,21 @@
+body {
+  background-color: #E8F6EA; 
+}
+
+.bg-pastel {
+  background-color: #C9E8C6 !important;
+}
+
+.btn-primary {
+  background-color: #7BC47F;
+  border-color: #7BC47F;
+}
+
+.btn-primary:hover {
+  background-color: #63A865;
+  border-color: #63A865;
+}
+
+.card {
+  border-radius: 10px;
+}
