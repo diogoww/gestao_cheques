@@ -2,11 +2,15 @@
 // fornecedores/list.php
 session_start();
 if (!isset($_SESSION['user_id'])) { 
-    header('Location: ../auth/login.php'); exit; 
+    header('Location: ../auth/login.php'); 
+    exit; 
 }
 require_once __DIR__ . '/../database/connect.php';
 
 $result = $conn->query("SELECT * FROM fornecedores ORDER BY id ASC");
+
+// Captura erro da exclusão, se houver
+$error = $_GET['error'] ?? '';
 ?>
 
 <!doctype html>
@@ -20,6 +24,14 @@ $result = $conn->query("SELECT * FROM fornecedores ORDER BY id ASC");
     <?php include __DIR__ . '/../includes/navbar.php'; ?>
 
     <div class="container mt-4">
+
+        <?php if ($error === 'fornecedor_has_cheques'): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Não é possível excluir o fornecedor, pois existem cheques vinculados a ele.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
+
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h3>Fornecedores</h3>
             <a class="btn btn-primary" href="create.php">Novo Fornecedor</a>
