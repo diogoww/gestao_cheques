@@ -61,10 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     <div class="w-100" style="max-width: 450px;">
 
-        <h2 class="text-center title-app">
+        <h1 class="text-center title-app">
             Grupo Rocha <br>
-            <small class="text-muted">Cheque Master – a sua gestão de cheques</small>
-        </h2>
+            <small class="text-muted">Gerenciamento de Cheques</small>
+        </h1>
 
         <div class="card p-4 shadow-sm">
             <h4 class="mb-3 text-center">Entrar</h4>
