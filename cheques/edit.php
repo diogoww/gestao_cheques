@@ -17,9 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data_vencimento = $_POST['data_vencimento'];
     $data_pagamento = empty($_POST['data_pagamento']) ? null : $_POST['data_pagamento'];
     $fornecedor_id = empty($_POST['fornecedor_id']) ? null : intval($_POST['fornecedor_id']);
-    $observacoes = $_POST['observacoes'];
+    $observacoes = $_POST['observacao'];
 
-    $stmt = $conn->prepare("UPDATE cheques SET numero_cheque=?, valor=?, data_emissao=?, data_vencimento=?, data_pagamento=?, observacoes=?, fornecedor_id=? WHERE id=?");
+    $stmt = $conn->prepare("UPDATE cheques SET numero_cheque=?, valor=?, data_emissao=?, data_vencimento=?, data_pagamento=?, observacao=?, fornecedor_id=? WHERE id=?");
     $stmt->bind_param('sdsssisi', $numero, $valor, $data_emissao, $data_vencimento, $data_pagamento, $observacoes, $fornecedor_id, $id);
     $stmt->execute();
     header('Location: list.php');
