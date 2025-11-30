@@ -41,69 +41,74 @@ $fornecedores = $conn->query("SELECT id, nome FROM fornecedores ORDER BY nome");
 </head>
 <body>
     <?php include __DIR__ . '/../includes/navbar.php'; ?>
-    <div class="container mt-4">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h3>Cheques</h3>
-            <a class="btn btn-primary" href="create.php">Novo Cheque</a>
-        </div>
 
-        <form class="card p-3 mb-3" method="get">
-            <div class="row g-2">
-                <div class="col-md-3">
-                    <input class="form-control" name="numero" placeholder="Número" value="<?= htmlspecialchars($_GET['numero'] ?? '') ?>">
-                </div>
-                <div class="col-md-3">
-                    <select name="fornecedor" class="form-select">
-                    <option value="">Todos fornecedores</option>
-                    <?php foreach ($fornecedores as $f): ?>
-                        <option value="<?= $f['id'] ?>" <?= (isset($_GET['fornecedor']) && $_GET['fornecedor']==$f['id']) ? 'selected' : '' ?>><?= htmlspecialchars($f['nome']) ?></option>
-                    <?php endforeach; ?>
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <button class="btn btn-outline-secondary">Filtrar</button>
-                </div>
-                <div class="col-md-4 text-end">
-                    <a class="btn btn-outline-success" href="list.php?status=vencidos">Ver vencidos</a>
-                </div>
+    <div class="content-wrapper">
+        <div class="container mt-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3>Cheques</h3>
+                <a class="btn btn-primary" href="create.php">Novo Cheque</a>
             </div>
-        </form>
 
-        <table class="table table-bordered bg-white">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Número</th>
-                    <th>Fornecedor</th>
-                    <th>Emissão</th>
-                    <th>Vencimento</th>
-                    <th>Valor</th>
-                    <th>Pago em</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (count($cheques) === 0): ?>
-                    <tr><td colspan="8" class="text-center">Nenhum cheque encontrado</td></tr>
-                <?php endif; ?>
-                <?php foreach ($cheques as $c): ?>
-                <tr>
-                    <td><?= $c['id'] ?></td>
-                    <td><?= htmlspecialchars($c['numero_cheque']) ?></td>
-                    <td><?= htmlspecialchars($c['fornecedor']) ?></td>
-                    <td><?= $c['data_emissao'] ?></td>
-                    <td><?= $c['data_vencimento'] ?></td>
-                    <td>R$ <?= number_format($c['valor'],2,',','.') ?></td>
-                    <td><?= $c['data_pagamento'] ?? '-' ?></td>
-                    <td>
-                    <a class="btn btn-sm btn-warning" href="edit.php?id=<?= $c['id'] ?>">Editar</a>
-                    <a class="btn btn-sm btn-danger" href="delete.php?id=<?= $c['id'] ?>" onclick="return confirm('Remover cheque?')">Excluir</a>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+            <form class="card p-3 mb-3" method="get">
+                <div class="row g-2">
+                    <div class="col-md-3">
+                        <input class="form-control" name="numero" placeholder="Número" value="<?= htmlspecialchars($_GET['numero'] ?? '') ?>">
+                    </div>
+                    <div class="col-md-3">
+                        <select name="fornecedor" class="form-select">
+                        <option value="">Todos fornecedores</option>
+                        <?php foreach ($fornecedores as $f): ?>
+                            <option value="<?= $f['id'] ?>" <?= (isset($_GET['fornecedor']) && $_GET['fornecedor']==$f['id']) ? 'selected' : '' ?>><?= htmlspecialchars($f['nome']) ?></option>
+                        <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-outline-secondary">Filtrar</button>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <a class="btn btn-outline-success" href="list.php?status=vencidos">Ver vencidos</a>
+                    </div>
+                </div>
+            </form>
+
+            <table class="table table-bordered bg-white">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Número</th>
+                        <th>Fornecedor</th>
+                        <th>Emissão</th>
+                        <th>Vencimento</th>
+                        <th>Valor</th>
+                        <th>Pago em</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (count($cheques) === 0): ?>
+                        <tr><td colspan="8" class="text-center">Nenhum cheque encontrado</td></tr>
+                    <?php endif; ?>
+                    <?php foreach ($cheques as $c): ?>
+                    <tr>
+                        <td><?= $c['id'] ?></td>
+                        <td><?= htmlspecialchars($c['numero_cheque']) ?></td>
+                        <td><?= htmlspecialchars($c['fornecedor']) ?></td>
+                        <td><?= $c['data_emissao'] ?></td>
+                        <td><?= $c['data_vencimento'] ?></td>
+                        <td>R$ <?= number_format($c['valor'],2,',','.') ?></td>
+                        <td><?= $c['data_pagamento'] ?? '-' ?></td>
+                        <td>
+                        <a class="btn btn-sm btn-warning" href="edit.php?id=<?= $c['id'] ?>">Editar</a>
+                        <a class="btn btn-sm btn-danger" href="delete.php?id=<?= $c['id'] ?>" onclick="return confirm('Remover cheque?')">Excluir</a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
+
+    
     <?php include __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>
