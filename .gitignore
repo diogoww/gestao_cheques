@@ -42,3 +42,5 @@ backup/
 *.rar
 *.7z
 *.old
+
+hash.php
