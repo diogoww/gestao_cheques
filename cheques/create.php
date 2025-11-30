@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fornecedor_id = empty($_POST['fornecedor_id']) ? null : intval($_POST['fornecedor_id']);
     $observacoes = $_POST['observacoes'];
 
-    $stmt = $conn->prepare("INSERT INTO cheques (numero_cheque, valor, data_emissao, data_vencimento, observacoes, fornecedor_id) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO cheques (numero_cheque, valor, data_emissao, data_vencimento, observacao, fornecedor_id) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->bind_param('sdsssi', $numero, $valor, $data_emissao, $data_vencimento, $observacoes, $fornecedor_id);
     $stmt->execute();
     header('Location: list.php');
