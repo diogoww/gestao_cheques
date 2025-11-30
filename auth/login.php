@@ -4,33 +4,41 @@ require_once __DIR__ . '/../database/connect.php';
 
 $erro = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    // CORREÇÃO: pegar "usuario"
     $usuario = trim($_POST['usuario'] ?? '');
     $senha = $_POST['senha'] ?? '';
 
     if ($usuario === '' || $senha === ''){
-        $erro = "Preencha com usuário e senha padrão.";
+        $erro = "Preencha com usuário e senha.";
     } else {
-        $stsm = $conn -> prepare("SELECT id, usuario, senha FROM usuarios WHERE usuario = ?");
-        $stsm -> bind_param('s', $usuario);
-        $stsm -> execute();
-        $res = $stsm -> get_result();
 
-        if ($res && $res -> num_rows === 1){
-            $user = $res -> fetch_assoc();
-            if (password_verify($senha, $user['senha'])){
+        $stsm = $conn->prepare("SELECT id, username, senha FROM usuarios WHERE username = ?");
+        $stsm->bind_param('s', $usuario);
+        $stsm->execute();
+        $res = $stsm->get_result();
+
+        if ($res && $res->num_rows === 1){
+            $user = $res->fetch_assoc();
+
+            if (password_verify($senha, $user['senha'])) {
+
                 $_SESSION['user_id'] = $user['id'];
-                $_SESSION['user_name'] = $user['usuario'];
+
+                // CORREÇÃO: salvar o campo correto
+                $_SESSION['user_name'] = $user['username'];
+
                 header('Location: ../index.php');
                 exit;
             } else {
                 $erro = "Usuário ou senha incorretos.";
             }
         } else {
-            $erro = "Usuário ou senha incorretos";
+            $erro = "Usuário ou senha incorretos.";
         }
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
