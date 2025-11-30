@@ -1,3 +1,9 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
   background-color: #E8F6EA; 
 }
@@ -18,4 +24,14 @@ body {
 
 .card {
   border-radius: 10px;
+}
+
+.body-wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrapper {
+    flex: 1;
 }
