@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 require_once __DIR__ . '/../database/connect.php';
 
-$result = $conn->query("SELECT * FROM fornecedores ORDER BY nome ASC");
+$result = $conn->query("SELECT * FROM fornecedores ORDER BY id ASC");
 ?>
 
 <!doctype html>
