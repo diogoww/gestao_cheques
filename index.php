@@ -18,7 +18,7 @@ if (!isset($_SESSION['user_id'])){
     ?>
 </head>
 <body>
-    <?php include __DIR__ . '/cheques/includes/navbar.php'; ?>
+    <?php include __DIR__ . '/includes/navbar.php'; ?>
 
     <div class="container mt-4">
         <h3>Bem-vindo, <?= htmlspecialchars($_SESSION['user_name']) ?>!</h3>
@@ -29,7 +29,7 @@ if (!isset($_SESSION['user_id'])){
                 <div class="card p-3">
                     <h5>Total de Fornecedores</h5>
                     <?php
-                    require __DIR__ . '/cheques/db/connect.php';
+                    require __DIR__ . '/database/connect.php';
                     $res = $conn->query("SELECT COUNT(*) as c FROM fornecedores");
                     $c = $res->fetch_assoc()['c'] ?? 0;
                     ?>
@@ -59,6 +59,6 @@ if (!isset($_SESSION['user_id'])){
         </div>
     </div>
 
-    <?php include __DIR__ . '/cheques/includes/footer.php'; ?>
+    <?php include __DIR__ . '/includes/footer.php'; ?>
 </body>
 </html>
