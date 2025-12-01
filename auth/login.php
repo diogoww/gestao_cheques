@@ -2,13 +2,14 @@
 session_start();
 require_once __DIR__ . '/../database/connect.php';
 
-$erro = '';
-if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+$erro_login = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = trim($_POST['username'] ?? '');
     $senha = $_POST['senha'] ?? '';
 
-    if ($usuario === '' || $senha === ''){
-        $erro = "Preencha o usuário e a senha.";
+    if ($usuario === '' || $senha === '') {
+        $erro_login = "Preencha o usuário e a senha.";
     } else {
         $stsm = $conn->prepare("SELECT id, username, senha FROM usuarios WHERE username = ?");
         $stsm->bind_param('s', $usuario);
@@ -23,10 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 header('Location: ../index.php');
                 exit;
             } else {
-                $erro = "Usuário ou senha incorretos.";
+                $erro_login = "Usuário ou senha incorretos.";
             }
         } else {
-            $erro = "Usuário ou senha incorretos.";
+            $erro_login = "Usuário ou senha incorretos.";
         }
     }
 }
@@ -69,8 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         <div class="card p-4 shadow-sm">
             <h4 class="mb-3 text-center">Entrar</h4>
 
-            <?php if ($erro): ?>
-                <div class="alert alert-danger"><?= htmlspecialchars($erro) ?></div>
+            <?php if ($erro_login): ?>
+                <div class="alert alert-danger"><?= htmlspecialchars($erro_login) ?></div>
             <?php endif; ?>
 
             <form method="post">
@@ -84,15 +85,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                     <input type="password" name="senha" class="form-control" required>
                 </div>
 
-                <div class="d-grid">
+                <div class="d-grid mb-2">
                     <button class="btn btn-success">Entrar</button>
                 </div>
             </form>
+
+            <div class="text-center mt-2">
+                <small>Ainda não tem conta?
+                    <a href="register.php" style="color: #198754; text-decoration: none;">Registrar novo usuário</a>
+                </small>
+            </div>
         </div>
 
     </div>
 
 </div>
+
+<?php include __DIR__ . '/../includes/footer.php'; ?>
 
 </body>
 </html>
