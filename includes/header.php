@@ -1,13 +1,15 @@
 <?php
 ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/gestao_cheques/style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
     body {
         background-color: #E8F5E9 !important;
         min-height: 100vh;
+        display: flex;
+        flex-direction: column;
     }
 
     .menu-card {
@@ -62,9 +64,15 @@
         transform: scale(1.05);
     }
 
-    .btn-voltar {
+    /* Botão voltar - deve vir depois para sobrescrever .navbar .btn */
+    .navbar .btn-voltar {
         background-color: #f7a600 !important; /* laranja forte */
         color: white !important;
         border: none !important;
+    }
+    
+    .navbar .btn-voltar:hover {
+        background-color: #e69400 !important; /* laranja mais escuro no hover */
+        transform: scale(1.05);
     }
 </style>
