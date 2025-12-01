@@ -18,6 +18,7 @@ if (!isset($_SESSION['user_id'])) {
 <body>
     <?php include __DIR__ . '/includes/navbar.php'; ?>
 
+    <div class="content-wrapper">
     <div class="container mt-4 text-center">
 
         <h2 class="mb-4">Grupo Rocha - Cheque Master</h2>
@@ -80,6 +81,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>
 
+    </div>
     </div>
 
     <?php include __DIR__ . '/includes/footer.php'; ?>
