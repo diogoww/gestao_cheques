@@ -109,6 +109,8 @@ $fornecedores = $conn->query("SELECT id, nome FROM fornecedores ORDER BY nome");
     </div>
 
     
+    </div>
+
     <?php include __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>
