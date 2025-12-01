@@ -6,6 +6,9 @@ html, body {
 
 body {
   background-color: #E8F6EA; 
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .bg-pastel {
@@ -27,11 +30,28 @@ body {
 }
 
 .body-wrapper {
-    min-height: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 .content-wrapper {
     flex: 1;
+}
+
+/* Botão voltar laranja */
+.navbar .btn-voltar {
+    background-color: #f7a600 !important;
+    color: white !important;
+    border: none !important;
+}
+
+.navbar .btn-voltar:hover {
+    background-color: #e69400 !important;
+    transform: scale(1.05);
+}
+
+/* Footer fixo na base */
+footer {
+    margin-top: auto;
 }
