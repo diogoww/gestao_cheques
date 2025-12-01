@@ -31,6 +31,7 @@ Sistema web desenvolvido para o **Grupo Rocha** para gerenciamento completo de c
 
 ### Autenticação
 - 🔐 Sistema de login seguro com hash de senhas
+- 🆕 Registro de novos usuários com senha hasheada diretamente pela interface
 - 🔒 Controle de sessão para proteção de rotas
 - 🚪 Logout seguro
 
@@ -104,7 +105,11 @@ $conn = new mysqli("localhost", "seu_usuario", "sua_senha", "gestao_cheques", 33
 
 **Nota**: Ajuste a porta (3307) conforme sua configuração do MySQL.
 
-### 4. Crie um usuário inicial
+### 4. (Opcional) Crie um usuário inicial via SQL
+
+Este passo é opcional, pois agora é possível registrar usuários diretamente na aplicação
+pela tela de registro (`auth/register.php`). Se preferir criar um usuário inicial via SQL,
+você ainda pode usar o fluxo abaixo:
 
 Use o arquivo `hash.php` para gerar o hash de uma senha:
 
@@ -138,6 +143,7 @@ http://localhost/gestao_cheques/
 Gestao_Cheques/
 ├── auth/                    # Autenticação
 │   ├── login.php            # Página de login
+│   ├── register.php         # Página de registro de novos usuários
 │   └── logout.php           # Logout do sistema
 ├── cheques/                 # Módulo de cheques
 │   ├── create.php           # Cadastro de cheques
@@ -181,11 +187,12 @@ Gestao_Cheques/
 
 ## 📝 Uso
 
-1. **Login**: Acesse o sistema e faça login com suas credenciais
-2. **Dashboard**: Visualize estatísticas e acesse os módulos principais
-3. **Fornecedores**: Cadastre fornecedores antes de criar cheques vinculados
-4. **Cheques**: Gerencie todos os cheques, filtre por critérios e acompanhe vencimentos
-5. **Filtros**: Use os filtros na listagem de cheques para encontrar registros específicos
+1. **Registro (opcional)**: Acesse `auth/register.php` para criar um novo usuário, caso ainda não exista
+2. **Login**: Acesse `auth/login.php` e faça login com suas credenciais
+3. **Dashboard**: Visualize estatísticas e acesse os módulos principais
+4. **Fornecedores**: Cadastre fornecedores antes de criar cheques vinculados
+5. **Cheques**: Gerencie todos os cheques, filtre por critérios e acompanhe vencimentos
+6. **Filtros**: Use os filtros na listagem de cheques para encontrar registros específicos
 
 ## 👤 Desenvolvido por
 
