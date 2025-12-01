@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <?php include __DIR__ . '/../includes/navbar.php'; ?>
+    <div class="content-wrapper">
     <div class="container mt-4">
         <h3>Novo Fornecedor</h3>
         <form method="post">
@@ -44,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <button class="btn btn-primary">Salvar</button>
             </div>
         </form>
+    </div>
     </div>
     <?php include __DIR__ . '/../includes/footer.php'; ?>
     </body>
