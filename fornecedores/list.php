@@ -23,6 +23,7 @@ $error = $_GET['error'] ?? '';
 <body>
     <?php include __DIR__ . '/../includes/navbar.php'; ?>
 
+    <div class="content-wrapper">
     <div class="container mt-4">
 
         <?php if ($error === 'fornecedor_has_cheques'): ?>
@@ -62,6 +63,7 @@ $error = $_GET['error'] ?? '';
                 <?php endwhile; ?>
             </tbody>
         </table>
+    </div>
     </div>
 
     <?php include __DIR__ . '/../includes/footer.php'; ?>
