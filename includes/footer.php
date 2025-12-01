@@ -1,4 +1,4 @@
-<footer class="text-center py-3 mt-4" style="background-color: #a8d5a2;">
+<footer class="text-center py-3" style="background-color: #a8d5a2;">
     <span style="font-weight: 500;">
         Desenvolvido por Diogo José Varaschin de Oliveira © 2025 | Todos os direitos reservados.
     </span>
